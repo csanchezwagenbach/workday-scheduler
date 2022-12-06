@@ -66,7 +66,7 @@ var hourSixteen = {
 var hourSeventeen = {
   project: hourSeventeenInput,
   hour: 17
-}
+};
 
   var projects = [
     hourNine, hourTen, hourEleven, hourTwelve, hourThirteen, hourFourteen, hourFifteen, hourSixteen, hourSeventeen
@@ -105,12 +105,25 @@ var hourSeventeen = {
   // attribute of each time-block be used to conditionally add or remove the
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
+console.log(projects[2].hour.valueOf());  
+console.log(dayjs().format("HH"));
 
-  //
+ for (var i=0; i < projects.length; i++) {
+ var parentBlock = $(projects[i].project.parent());
+console.log(parentBlock);
+console.log(projects[i].hour.valueOf());
+console.log(dayjs().format("HH"))
+     if (projects[i].hour.valueOf() - dayjs().format("HH") >= 1) {
+     parentBlock.removeAttr("past");
+      parentBlock.attr("future");
+    } else if (projects[i].hour.valueOf() - dayjs().format("HH") == 0) {
+      parentBlock.removeAttr("past");
+      parentBlock.attr("present");
+  }
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
  displayDateAndTime();
 setInterval(displayDateAndTime, 1000);
-});
+}});
