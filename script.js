@@ -24,46 +24,55 @@ $(function () {
 
 var hourNine = {
   project: hourNineInput,
+  text: hourNineInput.val(),
   hour: 9,
 };
 
 var hourTen = {
   project: hourTenInput,
+  text: hourTenInput.val(),
   hour: 10
 };
 
 var hourEleven = {
   project: hourElevenInput,
+  text: hourElevenInput.val(),
   hour: 11
 };
 
 var hourTwelve = {
   project: hourTwelveInput,
+  text: hourTwelveInput.val(),
   hour: 12
 };
 
 var hourThirteen = {
   project: hourThirteenInput,
+  text: hourThirteenInput.val(),
   hour: 13
 };
 
 var hourFourteen = {
   project: hourFourteenInput,
+  text: hourFourteenInput.val(),
   hour: 14,
 };
 
 var hourFifteen = {
   project: hourFifteenInput,
+  text: hourFifteenInput.val(),
   hour: 15,
 };
 
 var hourSixteen = {
   project: hourSixteenInput,
+  text: hourSixteenInput.val(),
   hour: 16
 };
 
 var hourSeventeen = {
   project: hourSeventeenInput,
+  text: hourSeventeenInput.val(),
   hour: 17
 };
 
@@ -71,27 +80,25 @@ var hourSeventeen = {
     hourNine, hourTen, hourEleven, hourTwelve, hourThirteen, hourFourteen, hourFifteen, hourSixteen, hourSeventeen
   ];
 
-  // function saveProjects(event) {
-  //   event.preventDefault();
-  //   for (var i = 0; i < projects.length; i++) {
-  //     if(!projects[i].project) {
-  //       projects[i].project.text("")
-  //     } else {
-  //       projects[i].project.text(projects[i].project.val());
+   function saveProjects(event) {
+     event.preventDefault();
+     for (var i = 0; i < projects.length; i++) {  
+      var projectText = projects[i].text.;  
+      console.log(projectText)
+  };  
+   localStorage.setItem("projects", JSON.stringify(projects));
+  //   var projectDescriptions = [
+  //     {
+  //       hour: "",
+  //       project: ""
   //     }
-  //     console.log(projects[i].project);
-  // };  
-  // localStorage.setItem("projects", JSON.stringify(projects));
-    // var projectDescriptions = [
-    //   {
-    //     hour: ,
-    //     project: 
-    //   }
 
-    // ]
-  // }
+  //   ]
+   }
 
-  // saveButton.on("click", saveProjects);
+   saveButton.on("click", saveProjects);
+
+
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -108,9 +115,9 @@ var hourSeventeen = {
 
  for (var i=0; i < projects.length; i++) {
  var parentBlock = $(projects[i].project.parent());
-console.log(parentBlock);
-console.log(projects[i].hour.valueOf());
-console.log(dayjs().format("HH"))
+// console.log(parentBlock);
+// console.log(projects[i].hour.valueOf());
+// console.log(dayjs().format("HH"));
      if (projects[i].hour.valueOf() - dayjs().format("HH") > 0) {
       parentBlock.removeClass("past");
       parentBlock.addClass("future");
@@ -122,6 +129,6 @@ console.log(dayjs().format("HH"))
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
- displayDateAndTime();
+displayDateAndTime();
 setInterval(displayDateAndTime, 1000);
-}});
+ }});
