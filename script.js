@@ -22,19 +22,67 @@ $(function () {
   var hourSixteenInput = $("#hour-16-project");
   var hourSeventeenInput = $("hour-17-project");
 
-  var projectInputs = [
-    hourNineInput, hourTenInput, hourElevenInput, hourTwelveInput, hourThirteenInput, hourFourteenInput, hourFifteenInput, hourSixteenInput, hourSeventeenInput
+var hourNine = {
+  project: hourNineInput,
+  hour: 9,
+};
+
+var hourTen = {
+  project: hourTenInput,
+  hour: 10
+
+};
+
+var hourEleven = {
+  project: hourElevenInput,
+  hour: 11
+};
+
+var hourTwelve = {
+  project: hourTwelveInput,
+  hour: 12
+};
+
+var hourThirteen = {
+  project: hourThirteenInput,
+  hour: 13
+};
+
+var hourFourteen = {
+  project: hourFourteenInput,
+  hour: 14,
+};
+
+var hourFifteen = {
+  project: hourFifteenInput,
+  hour: 15,
+};
+
+var hourSixteen = {
+  project: hourSixteenInput,
+  hour: 16
+};
+
+var hourSeventeen = {
+  project: hourSeventeenInput,
+  hour: 17
+}
+
+  var projects = [
+    hourNine, hourTen, hourEleven, hourTwelve, hourThirteen, hourFourteen, hourFifteen, hourSixteen, hourSeventeen
   ];
 
-  function saveProjects(event) {
-    event.preventDefault();
-    for (var i = 0; i < projectInputs.length; i++) {
-      if(!projectInputs[i]) {
-        projectInputs[i].text("")
-      } else {
-        projectInputs[i].text(projectInputs[i].val());
-      }
-  }; localStorage.setItem("projects", JSON.stringify(projectInputs));
+  // function saveProjects(event) {
+  //   event.preventDefault();
+  //   for (var i = 0; i < projects.length; i++) {
+  //     if(!projects[i].project) {
+  //       projects[i].project.text("")
+  //     } else {
+  //       projects[i].project.text(projects[i].project.val());
+  //     }
+  //     console.log(projects[i].project);
+  // };  
+  // localStorage.setItem("projects", JSON.stringify(projects));
     // var projectDescriptions = [
     //   {
     //     hour: ,
@@ -42,9 +90,9 @@ $(function () {
     //   }
 
     // ]
-  }
+  // }
 
-  saveButton.on("click", saveProjects);
+  // saveButton.on("click", saveProjects);
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -57,11 +105,12 @@ $(function () {
   // attribute of each time-block be used to conditionally add or remove the
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
+
   //
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
-displayDateAndTime();
+ displayDateAndTime();
 setInterval(displayDateAndTime, 1000);
 });
