@@ -1,15 +1,50 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
-var dateAndTime = $("#currentDay")
-function displayDateAndTime () {
-var nowMoment = dayjs().format("MMM DD, YYYY [at] hh:mm:ss a");
-dateAndTime.text(nowMoment);
-}
-$(function () {
 
-  // function showNow () {nowMoment.text(dayjs().format("MMM DD, YYYY hh:mm:ss a"))};
-  // setInterval(showNow(), 1000);
+
+$(function () {
+  var dateAndTime = $("#currentDay")
+
+  function displayDateAndTime () {
+  var nowMoment = dayjs().format("MMM DD, YYYY [at] hh:mm:ss a");
+  dateAndTime.text(nowMoment);
+  }
+
+  var saveButton = $(".saveBtn");
+  var hourNineInput = $("#hour-9-project");
+  var hourTenInput = $("#hour-10-project");
+  var hourElevenInput = $("#hour-11-project");
+  var hourTwelveInput = $("#hour-12-project");
+  var hourThirteenInput = $("#hour-13-project");
+  var hourFourteenInput = $("#hour-14-project");
+  var hourFifteenInput = $("#hour-15-project");
+  var hourSixteenInput = $("#hour-16-project");
+  var hourSeventeenInput = $("hour-17-project");
+
+  var projectInputs = [
+    hourNineInput, hourTenInput, hourElevenInput, hourTwelveInput, hourThirteenInput, hourFourteenInput, hourFifteenInput, hourSixteenInput, hourSeventeenInput
+  ];
+
+  function saveProjects(event) {
+    event.preventDefault();
+    for (var i = 0; i < projectInputs.length; i++) {
+      if(!projectInputs[i]) {
+        projectInputs[i].text("")
+      } else {
+        projectInputs[i].text(projectInputs[i].val());
+      }
+  }; localStorage.setItem("projects", JSON.stringify(projectInputs));
+    // var projectDescriptions = [
+    //   {
+    //     hour: ,
+    //     project: 
+    //   }
+
+    // ]
+  }
+
+  saveButton.on("click", saveProjects);
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
