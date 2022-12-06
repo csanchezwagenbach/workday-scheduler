@@ -81,19 +81,64 @@ var hourSeventeen = {
   ];
 
    function saveProjects(event) {
+    console.log(projects)
      event.preventDefault();
+
+     var hourNine = {
+      text: hourNineInput.val(),
+      hour: 9,
+    };
+    
+    var hourTen = {
+      text: hourTenInput.val(),
+      hour: 10
+    };
+    
+    var hourEleven = {
+      text: hourElevenInput.val(),
+      hour: 11
+    };
+    
+    var hourTwelve = {
+      text: hourTwelveInput.val(),
+      hour: 12
+    };
+    
+    var hourThirteen = {
+      text: hourThirteenInput.val(),
+      hour: 13
+    };
+    
+    var hourFourteen = {
+      text: hourFourteenInput.val(),
+      hour: 14,
+    };
+    
+    var hourFifteen = {
+      text: hourFifteenInput.val(),
+      hour: 15,
+    };
+    
+    var hourSixteen = {
+      text: hourSixteenInput.val(),
+      hour: 16
+    };
+    
+    var hourSeventeen = { 
+      text: hourSeventeenInput.val(),
+      hour: 17
+    };
+    
+      var projects = [
+        hourNine, hourTen, hourEleven, hourTwelve, hourThirteen, hourFourteen, hourFifteen, hourSixteen, hourSeventeen
+      ];
+
      for (var i = 0; i < projects.length; i++) {  
-      var projectText = projects[i].text.;  
+      var projectText = projects[i].text;  
       console.log(projectText)
   };  
    localStorage.setItem("projects", JSON.stringify(projects));
-  //   var projectDescriptions = [
-  //     {
-  //       hour: "",
-  //       project: ""
-  //     }
 
-  //   ]
    }
 
    saveButton.on("click", saveProjects);
