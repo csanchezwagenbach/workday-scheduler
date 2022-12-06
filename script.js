@@ -138,7 +138,6 @@ var hourSeventeen = {
       console.log(projectText)
   };  
    localStorage.setItem("projects", JSON.stringify(projects));
-
    }
 
    saveButton.on("click", saveProjects);
@@ -157,7 +156,7 @@ var hourSeventeen = {
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
-  //
+  
  function getProjects () {
   var projectsFromStorage = localStorage.getItem("projects");
   if (projectsFromStorage) {
@@ -165,14 +164,18 @@ var hourSeventeen = {
   } else {
     return projectsFromStorage;
   }
-  console.log(projectsFromStorage);
- }
+ // console.log(projectsFromStorage)
+
+  for (var i = 0; i < projectsFromStorage.length; i++) {
+    projects[i].project.val(projectsFromStorage[i].text);
+    console.log(projects[i].project.textContent)
+  }
+ } 
   
   
 
 
- 
+ getProjects();
  displayDateAndTime();
  setInterval(displayDateAndTime, 1000);
- getProjects();
 });
